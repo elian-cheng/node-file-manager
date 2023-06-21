@@ -4,6 +4,7 @@ import moveFile from "../file-operations/moveFile.js";
 import readFile from "../file-operations/readFile.js";
 import removeFile from "../file-operations/removeFile.js";
 import renameFile from "../file-operations/renameFile.js";
+import calculateHash from "../hash-calculation/calculateHash.js";
 import goToFile from "../navigation/goToFile.js";
 import printFiles from "../navigation/printFiles.js";
 import { ERROR_INVALID_INPUT } from "../notifications/errors/errors.js";
@@ -45,6 +46,9 @@ const parseLine = async (rl, line) => {
       break;
     case "os":
       await osInfo(...args);
+      break;
+    case "hash":
+      await calculateHash(args);
       break;
     default:
       console.error(ERROR_INVALID_INPUT);
