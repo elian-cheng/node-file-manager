@@ -1,3 +1,5 @@
+import compressFile from "../compression/compressFile.js";
+import decompressFile from "../compression/decompressFile.js";
 import addFile from "../file-operations/addFile.js";
 import copyFile from "../file-operations/copyFile.js";
 import moveFile from "../file-operations/moveFile.js";
@@ -49,6 +51,12 @@ const parseLine = async (rl, line) => {
       break;
     case "hash":
       await calculateHash(args);
+      break;
+    case "compress":
+      await compressFile(args);
+      break;
+    case "decompress":
+      await decompressFile(args);
       break;
     default:
       console.error(ERROR_INVALID_INPUT);
