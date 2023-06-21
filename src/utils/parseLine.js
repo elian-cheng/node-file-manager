@@ -7,6 +7,7 @@ import renameFile from "../file-operations/renameFile.js";
 import goToFile from "../navigation/goToFile.js";
 import printFiles from "../navigation/printFiles.js";
 import { ERROR_INVALID_INPUT } from "../notifications/errors/errors.js";
+import osInfo from "../operating-system/osInfo.js";
 
 const parseLine = async (rl, line) => {
   let [command, ...args] = line.trim().split(" ");
@@ -41,6 +42,9 @@ const parseLine = async (rl, line) => {
       break;
     case "rm":
       await removeFile(args);
+      break;
+    case "os":
+      await osInfo(...args);
       break;
     default:
       console.error(ERROR_INVALID_INPUT);
